@@ -1,0 +1,442 @@
+/*______________________________About_________________________________*/
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap);
+/* Локальные шрифты - теперь восстановлены! */
+
+/* Montserrat - основной шрифт */
+@font-face {
+    font-family: 'Montserrat';
+    src: url(/fonts/Montserrat-Light.a2ee2764f3e238372c1e.woff2) format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url(/fonts/Montserrat-Regular.06961cfc516ccad0003c.woff2) format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url(/fonts/Montserrat-Medium.bcd43dff4d9963b1aa0e.woff2) format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url(/fonts/Montserrat-SemiBold.a8c25b2680603d2d21f2.woff2) format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Playfair Display - шрифт для заголовков */
+@font-face {
+    font-family: 'Playfair Display';
+    src: url(/fonts/PlayfairDisplay-Regular.ac4533be98cdf2db83f9.woff2) format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url(/fonts/PlayfairDisplay-Medium.07bcba9cbfc262fd0594.woff2) format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url(/fonts/PlayfairDisplay-SemiBold.18c444db39f2db4b0cd7.woff2) format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url(/fonts/PlayfairDisplay-Bold.d0b3f7b8d4f26d34e161.woff2) format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+:root {
+    /* ========================================
+       ЦВЕТОВАЯ ПАЛИТРА
+       ======================================== */
+    
+    /* Основные цвета */
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-gray-50: #fafafa;
+    --color-gray-100: #f5f5f5;
+    --color-gray-200: #e5e5e5;
+    --color-gray-300: #d4d4d4;
+    --color-gray-400: #a3a3a3;
+    --color-gray-500: #737373;
+    --color-gray-600: #525252;
+    --color-gray-700: #404040;
+    --color-gray-800: #262626;
+    --color-gray-900: #171717;
+    
+    /* Акцентные цвета */
+    --color-accent: #2059bd;
+    --color-accent-rgb: 201, 169, 110;
+    --color-accent-light: #236ff3;
+    --color-accent-dark: #133164;
+    --color-accent-hover: #0b357e;
+    
+    /* Первичные цвета (алиасы для совместимости) */
+    --color-primary: var(--color-accent);
+    --color-primary-light: var(--color-accent-light);
+    --color-primary-dark: var(--color-accent-dark);
+    --color-primary-hover: var(--color-accent-hover);
+    
+    /* Семантические цвета */
+    --color-success: #22c55e;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    --color-info: #3b82f6;
+    
+    /* Фоновые цвета */
+    --color-bg-primary: var(--color-white);
+    --color-bg-secondary: var(--color-gray-50);
+    --color-bg-tertiary: var(--color-gray-100);
+    --color-bg-dark: var(--color-gray-900);
+    
+    /* Цвета текста */
+    --color-text-primary: var(--color-gray-900);
+    --color-text-secondary: var(--color-gray-600);
+    --color-text-tertiary: var(--color-gray-400);
+    --color-text-inverse: var(--color-white);
+    
+    /* Цвета границ */
+    --color-border: var(--color-gray-200);
+    --color-border-light: var(--color-gray-200);
+    --color-border-medium: var(--color-gray-300);
+    --color-border-dark: var(--color-gray-400);
+    
+    /* Дополнительные цвета для совместимости */
+    --color-background: var(--color-white);
+    --color-background-alt: var(--color-gray-50);
+    --color-background-light: var(--color-gray-50);
+    --color-surface: var(--color-white);
+    --color-surface-alt: var(--color-gray-50);
+    --color-text: var(--color-text-primary);
+    --color-text-light: var(--color-text-secondary);
+    
+    /* ========================================
+       ТИПОГРАФИКА
+       ======================================== */
+    
+    /* Шрифтовые семейства */
+    --font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    
+    /* Размеры шрифтов */
+    --font-size-xs: 0.75rem;     /* 12px */
+    --font-size-sm: 0.875rem;    /* 14px */
+    --font-size-base: 1rem;      /* 16px */
+    --font-size-lg: 1.125rem;    /* 18px */
+    --font-size-xl: 1.25rem;     /* 20px */
+    --font-size-2xl: 1.5rem;     /* 24px */
+    --font-size-3xl: 1.875rem;   /* 30px */
+    --font-size-4xl: 2.25rem;    /* 36px */
+    --font-size-5xl: 3rem;       /* 48px */
+    --font-size-6xl: 3.75rem;    /* 60px */
+    --font-size-7xl: 4.5rem;     /* 72px */
+    
+    /* Дополнительные размеры шрифтов для совместимости */
+    --font-size-md: var(--font-size-base);     /* 16px */
+    
+    /* Высота строк */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+    
+    /* Веса шрифтов */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-black: 900;
+    
+    /* ========================================
+       РАССТОЯНИЯ И РАЗМЕРЫ
+       ======================================== */
+    
+    /* Отступы */
+    --spacing-0: 0;
+    --spacing-1: 0.25rem;   /* 4px */
+    --spacing-2: 0.5rem;    /* 8px */
+    --spacing-3: 0.75rem;   /* 12px */
+    --spacing-4: 1rem;      /* 16px */
+    --spacing-5: 1.25rem;   /* 20px */
+    --spacing-6: 1.5rem;    /* 24px */
+    --spacing-8: 2rem;      /* 32px */
+    --spacing-10: 2.5rem;   /* 40px */
+    --spacing-12: 3rem;     /* 48px */
+    --spacing-16: 4rem;     /* 64px */
+    --spacing-20: 5rem;     /* 80px */
+    --spacing-24: 6rem;     /* 96px */
+    --spacing-32: 8rem;     /* 128px */
+    
+    /* Радиусы скругления */
+    --radius-none: 0;
+    --radius-sm: 0.125rem;   /* 2px */
+    --radius-base: 0.25rem;  /* 4px */
+    --radius-md: 0.375rem;   /* 6px */
+    --radius-lg: 0.5rem;     /* 8px */
+    --radius-xl: 0.75rem;    /* 12px */
+    --radius-2xl: 1rem;      /* 16px */
+    --radius-3xl: 1.5rem;    /* 24px */
+    --radius-full: 9999px;
+    
+    /* Дополнительные радиусы для совместимости */
+    --border-radius-large: var(--radius-xl);   /* 12px */
+    --border-radius-medium: var(--radius-lg);  /* 8px */
+
+    /* Размеры контейнеров */
+    --container-xs: 475px;
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+    --container-2xl: 1536px;
+    
+    /* ========================================
+       ТЕНИ И ЭФФЕКТЫ
+       ======================================== */
+    
+    /* Классические тени */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    
+    /* Многослойные glassmorphism тени */
+    --shadow-glass-1: 
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        0 4px 8px rgba(0, 0, 0, 0.04),
+        0 8px 16px rgba(0, 0, 0, 0.02);
+    --shadow-glass-2: 
+        0 2px 6px rgba(0, 0, 0, 0.12),
+        0 8px 16px rgba(0, 0, 0, 0.06),
+        0 16px 32px rgba(0, 0, 0, 0.04);
+    --shadow-glass-3: 
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        0 12px 24px rgba(0, 0, 0, 0.08),
+        0 24px 48px rgba(0, 0, 0, 0.06);
+    --shadow-glass-4: 
+        0 8px 24px rgba(0, 0, 0, 0.18),
+        0 16px 32px rgba(0, 0, 0, 0.12),
+        0 32px 64px rgba(0, 0, 0, 0.08);
+    --shadow-glass-5: 
+        0 16px 32px rgba(0, 0, 0, 0.2),
+        0 24px 48px rgba(0, 0, 0, 0.15),
+        0 48px 96px rgba(0, 0, 0, 0.1);
+        
+    /* Цветные тени с акцентом */
+    --shadow-accent-light: 0 8px 32px rgba(var(--color-accent-rgb), 0.15);
+    --shadow-accent-medium: 0 16px 48px rgba(var(--color-accent-rgb), 0.2);
+    --shadow-accent-heavy: 0 24px 64px rgba(var(--color-accent-rgb), 0.25);
+    
+    /* Glassmorphism эффекты */
+    --glass-bg-light: rgba(255, 255, 255, 0.85);
+    --glass-bg-medium: rgba(255, 255, 255, 0.7);
+    --glass-bg-dark: rgba(0, 0, 0, 0.3);
+    --glass-bg-accent: rgba(var(--color-accent-rgb), 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-blur: blur(20px);
+    --glass-blur-heavy: blur(40px);
+    
+    /* Переходы */
+    --transition-micro: 100ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Z-индексы */
+    --z-dropdown: 10;
+    --z-sticky: 20;
+    --z-fixed: 30;
+    --z-modal-backdrop: 40;
+    --z-modal: 50;
+    --z-popover: 60;
+    --z-tooltip: 70;
+    
+    /* ========================================
+       РАЗМЕРЫ КОМПОНЕНТОВ
+       ======================================== */
+    
+    --header-height: 4rem;
+    
+    /* ========================================
+       БРЕЙКПОИНТЫ
+       ======================================== */
+    
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+}
+
+/* Google Fonts fallback - загружается если локальные недоступны */
+
+/* ========================================
+   CSS RESET & ОСНОВНЫЕ СТИЛИ
+   Современный reset для фотографического сайта
+   ======================================== */
+
+/* Box model для всех элементов */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Сброс отступов и границ */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* Исключение для body - сохраняем возможность задать padding-top */
+body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    /* padding остаётся управляемым через header.css */
+}
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.about-container {
+    max-width: 1232px;
+    min-width: 648px;
+    width: 100%;
+    height: 80vh;
+    padding-inline: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    margin-inline: auto;
+    color: var(--color-accent-dark);
+    font-size: 22px;
+    padding-top: 70px;
+    font-family: var(--font-display);
+}
+
+.about-home__image {
+    width: 60%;
+    height: 100%;
+    object-fit: cover;
+    border: solid 1px var(--color-accent-dark);
+    border-radius: 2%;
+    box-shadow: 0 0 17px #5471d3;
+}
+
+.about-photoGallery {
+    width: 100%;
+    padding-inline: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 100px;
+    flex-wrap: wrap;
+}
+
+.about-imageGallery {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.about-imageGallery:hover {
+    filter: brightness(110%);
+    filter: contrast(130%);
+}
+
+.imageModal {
+    position: fixed;
+    inset: 8vh 28vw;
+    z-index: 3;
+    width: 45vw;
+    height: 88vh;
+    border-radius: 30px;
+    object-fit: cover;
+    
+}
+
+.containerImageModal {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    inset: 0 0; 
+}
+
+.containerImageModalVisible {
+    opacity: 1;
+    display: flex;
+}
+
+.containerImageModal::before { 
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 0.7);
+    z-index: 2;
+}
+
+
+.pageAbout {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    /*background-color: /*var(--color-gray-200)linear-gradient;*/
+    background-image: linear-gradient(180deg, #e2e9f5 30%, #95c3ff);
+    padding-block: 40px;
+}
+
+.close {
+    position: fixed;
+    inset: 6vh 74vw;
+    z-index: 3;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background-image: url(../images/icons8-close-32.png);
+    background-color: var(--color-gray-100);
+    border-radius: 16px;
+    box-shadow: 0 0 10px var(--color-gray-100);
+    transition: box-shadow 0.3s ease;
+}
+
+.close:hover {
+    box-shadow: 0 0 30px var(--color-gray-100);
+}

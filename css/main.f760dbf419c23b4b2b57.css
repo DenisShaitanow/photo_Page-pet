@@ -92,6 +92,7 @@
 body {
     margin: 0;
     border: 0;
+    padding: 0;
     /* padding остаётся управляемым через header.css */
 }
 
@@ -207,7 +208,7 @@ table {
     --color-accent: #2059bd;
     --color-accent-rgb: 201, 169, 110;
     --color-accent-light: #236ff3;
-    --color-accent-dark: #1b4690;
+    --color-accent-dark: #133164;
     --color-accent-hover: #0b357e;
     
     /* Первичные цвета (алиасы для совместимости) */
@@ -2861,38 +2862,6 @@ code {
     justify-content: flex-end;
 }
 
-/* Варианты модальных окон */
-.glass-modal--accent {
-    --glass-bg-light: rgba(var(--color-accent-rgb), 0.1);
-    --glass-border: rgba(var(--color-accent-rgb), 0.3);
-}
-
-.glass-modal--accent .glass-modal__container {
-    border: 1px solid rgba(var(--color-accent-rgb), 0.3);
-    box-shadow: var(--shadow-accent-medium);
-}
-
-.glass-modal--dark {
-    --glass-bg-light: rgba(0, 0, 0, 0.8);
-    --glass-border: rgba(255, 255, 255, 0.1);
-}
-
-.glass-modal--dark .glass-modal__title,
-.glass-modal--dark .glass-modal__body {
-    color: var(--color-text-inverse);
-}
-
-.glass-modal--fullscreen {
-    padding: 0;
-}
-
-.glass-modal--fullscreen .glass-modal__container {
-    max-width: 100vw;
-    max-height: 100vh;
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-}
 
 /* Анимации появления */
 .glass-modal--slide-up .glass-modal__container {
@@ -6135,188 +6104,6 @@ body.menu-open {
     margin-bottom: var(--spacing-16);
 }
 
-.service-card {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    border-radius: var(--radius-2xl);
-    padding: var(--spacing-8);
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    position: relative;
-    overflow: hidden;
-}
-
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(201, 169, 110, 0.1),
-        transparent
-    );
-    transition: left 0.6s ease;
-}
-
-.service-card:hover::before {
-    left: 100%;
-}
-
-.service-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.1),
-        0 0 0 1px rgba(201, 169, 110, 0.2);
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.service-card__icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto var(--spacing-6);
-    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
-    border-radius: var(--radius-2xl);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--font-size-3xl);
-    color: var(--color-text-inverse);
-    transition: all 0.4s ease;
-    position: relative;
-}
-
-.service-card__icon svg {
-    position: relative;
-    z-index: 2;
-    transition: all 0.4s ease;
-}
-
-.service-card__icon::after {
-    content: '';
-    position: absolute;
-    inset: 4px;
-    background: linear-gradient(135deg, var(--color-accent-hover) 0%, var(--color-accent) 100%);
-    border-radius: calc(var(--radius-2xl) - 4px);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 1;
-}
-
-.service-card:hover .service-card__icon {
-    transform: scale(1.1);
-    box-shadow: 0 15px 30px rgba(201, 169, 110, 0.3);
-}
-
-.service-card:hover .service-card__icon svg {
-    transform: scale(1.05);
-    color: white;
-}
-
-.service-card:hover .service-card__icon::after {
-    opacity: 1;
-}
-
-.service-card__title {
-    font-size: var(--font-size-xl);
-    font-family: var(--font-display);
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-4);
-    transition: color 0.3s ease;
-}
-
-.service-card:hover .service-card__title {
-    color: var(--color-accent);
-}
-
-.service-card__description {
-    font-size: var(--font-size-base);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
-    margin-bottom: var(--spacing-6);
-}
-
-.service-card__features {
-    list-style: none;
-    margin-bottom: var(--spacing-6);
-}
-
-.service-card__feature {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-2);
-    margin-bottom: var(--spacing-2);
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-}
-
-.service-card__feature::before {
-    content: '✓';
-    color: var(--color-accent);
-    font-weight: var(--font-weight-bold);
-    flex-shrink: 0;
-}
-
-.service-card__price {
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-accent);
-    margin-bottom: var(--spacing-4);
-}
-
-.service-card__price-note {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-tertiary);
-    margin-bottom: var(--spacing-6);
-}
-
-.service-card__action {
-    width: 100%;
-}
-
-/* Особые стили для премиум услуги */
-.service-card--premium {
-    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
-    color: var(--color-text-inverse);
-    border: 2px solid var(--color-accent-hover);
-    position: relative;
-    transform: scale(1.05);
-}
-
-.service-card--premium::after {
-    content: 'Популярно';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--color-accent-dark);
-    color: var(--color-text-inverse);
-    padding: var(--spacing-1) var(--spacing-4);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: var(--radius-full);
-}
-
-.service-card--premium .service-card__title,
-.service-card--premium .service-card__description,
-.service-card--premium .service-card__feature {
-    color: var(--color-text-inverse);
-}
-
-.service-card--premium .service-card__icon {
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--color-text-inverse);
-}
-
-.service-card--premium .service-card__price {
-    color: var(--color-text-inverse);
-}
 
 /* CTA секция услуг */
 .services__cta {
@@ -6391,6 +6178,8 @@ body.menu-open {
 .slider__container {
     position: relative;
     width: 100%;
+    max-width: 1232px;
+    margin-inline: auto;
     height: 100%;
 }
 
@@ -6530,10 +6319,12 @@ body.menu-open {
 
 /* Контейнер для стрелок */
 .slider__arrows {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    inset: 0 0;
+    transform: translateY(-100%);
+    margin-inline: auto;
     width: 100%;
+    max-width: 1232px;
     height: 100%;
     z-index: 4;
     pointer-events: none;
@@ -7252,6 +7043,11 @@ html body section.flashback-promo.section.section--light .flashback-card::after 
     visibility: visible;
     opacity: 1;
     transform: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.approach__cta:hover {
+    transform: scale(1.03);
 }
 
 .approach__cta-title {
@@ -7347,115 +7143,6 @@ section.services .slide-up {
 
 /* Принудительная видимость для всех дочерних элементов services */
 section.services * {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Стабильность видимости для process секции */
-section.process {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    padding: var(--spacing-20) 0;
-    position: relative;
-}
-
-section.process .process__container {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    position: relative;
-    z-index: 1;
-}
-
-section.process .process__header {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    text-align: center;
-    margin-bottom: var(--spacing-12);
-}
-
-section.process .process__title,
-section.process .process__subtitle {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-}
-
-section.process .process__steps {
-    display: flex;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    flex-direction: column;
-    gap: var(--spacing-8);
-    position: relative;
-}
-
-section.process .process-step {
-    display: flex;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    align-items: center;
-    gap: var(--spacing-6);
-    position: relative;
-    z-index: 1;
-}
-
-section.process .process-step__number {
-    display: flex;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    position: relative;
-    z-index: 2;
-}
-
-section.process .process-step__content {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    position: relative;
-    z-index: 1;
-}
-
-section.process .process-step__title,
-section.process .process-step__description {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-}
-
-/* Переопределение анимационных классов для process */
-section.process .fade-in,
-section.process .slide-left,
-section.process .slide-right {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    animation: none;
-    transition: none;
-}
-
-/* Псевдоэлементы должны быть видны */
-section.process::before,
-section.process .process__steps::before,
-section.process .process-step__content::before {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Принудительная видимость для всех дочерних элементов process */
-section.process * {
     visibility: visible;
     opacity: 1;
 }
@@ -8895,8 +8582,21 @@ section.faq .faq__subtitle {
     background: var(--color-bg-primary);
     border-radius: var(--border-radius-lg);
     border: 1px solid var(--color-border);
-    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.7s ease;
 }
+
+.contact-card.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Необязательно: разные задержки */
+  .contact-card.animate-in:nth-child(1) { transition-delay: 0s; }
+  .contact-card.animate-in:nth-child(2) { transition-delay: 0.1s; }
+  .contact-card.animate-in:nth-child(3) { transition-delay: 0.2s; }
+  .contact-card.animate-in:nth-child(4) { transition-delay: 0.3s; }
 
 .contact-card:hover {
     transform: translateY(-4px);
@@ -8911,7 +8611,6 @@ section.faq .faq__subtitle {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-primary-light);
     border-radius: 50%;
 }
 
@@ -8921,9 +8620,6 @@ section.faq .faq__subtitle {
     height: 30px;
 }
 
-.contact-card__whatsapp-icon {
-    filter: brightness(0) saturate(100%) invert(72%) sepia(23%) saturate(586%) hue-rotate(359deg) brightness(96%) contrast(87%);
-}
 
 .contact-card__title {
     font-size: var(--font-size-xl);
@@ -9825,7 +9521,7 @@ section.portfolio-categories .portfolio-category__features {
 
 section.portfolio-categories .portfolio-category__feature {
     background: var(--color-accent-light);
-    color: var(--color-accent);
+    color: var(--color-gray-100);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     padding: var(--spacing-1) var(--spacing-3);
@@ -10187,6 +9883,7 @@ html.force-visible section.portfolio-categories .section-subtitle,
 }
 
 .service-card__features {
+
   display: block;
   list-style: none;
   padding: 0;
@@ -10217,6 +9914,9 @@ html.force-visible section.portfolio-categories .section-subtitle,
 
 /* Service Cards */
 .service-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   background: var(--color-background);
   border-radius: 16px;
   padding: 2rem;
@@ -10228,17 +9928,6 @@ html.force-visible section.portfolio-categories .section-subtitle,
   overflow: hidden;
 }
 
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
 
 .service-card:hover::before {
   transform: scaleX(1);
@@ -10284,13 +9973,14 @@ html.force-visible section.portfolio-categories .section-subtitle,
   color: var(--color-text-light);
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  flex-grow: 1;
+ 
 }
 
 .service-card__features {
   list-style: none;
   padding: 0;
   margin: 0 0 1.5rem 0;
+  flex-grow: 1;
 }
 
 .service-card__features li {
@@ -10332,11 +10022,6 @@ html.force-visible section.portfolio-categories .section-subtitle,
   box-shadow: var(--shadow-lg);
 }
 
-.service-card--premium::before {
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-  transform: scaleX(1);
-}
-
 .service-card--premium .service-card__icon {
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
@@ -10368,22 +10053,6 @@ html.force-visible section.portfolio-categories .section-subtitle,
   font-weight: 400;
 }
 
-/* Премиум бейдж */
-.service-card--premium::after {
-  content: 'Популярно';
-  position: absolute;
-  top: -10px;
-  right: 20px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  color: white;
-  padding: 5px 15px;
-  border-radius: 15px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(201, 169, 110, 0.3);
-}
 
 .service-card--premium:hover {
   transform: scale(1.02) translateY(-12px);
@@ -10519,7 +10188,22 @@ html.force-visible section.portfolio-categories .section-subtitle,
   align-items: center;
   gap: 2rem;
   position: relative;
+  transform: translateX(-200%);
+  transition: all 1s ease-in-out;
+
 }
+
+.process-step.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Необязательно: разные задержки */
+  .process-step.animate-in:nth-child(1) { transition-delay: 0s; }
+  .process-step.animate-in:nth-child(2) { transition-delay: 0.2s; }
+  .process-step.animate-in:nth-child(3) { transition-delay: 0.4s; }
+  .process-step.animate-in:nth-child(4) { transition-delay: 0.6s; }
+  .process-step.animate-in:nth-child(5) { transition-delay: 0.8s; }
 
 .process-step:nth-child(even) {
   flex-direction: row-reverse;
@@ -10793,16 +10477,6 @@ html.force-visible section.portfolio-categories .section-subtitle,
   position: relative;
 }
 
-.testimonial-card__text::before {
-  content: '"';
-  position: absolute;
-  top: -10px;
-  left: -15px;
-  font-size: 3rem;
-  color: var(--color-primary);
-  opacity: 0.3;
-  font-family: serif;
-}
 
 .testimonial-card__author {
   display: flex;
@@ -12455,7 +12129,7 @@ section.faq {
 .contact-card {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--color-accent-dark);
     border-radius: 20px;
     box-shadow: var(--shadow-glass);
     transition: all 0.3s ease;
@@ -12465,19 +12139,10 @@ section.faq {
     text-decoration: none;
 }
 
-.contact-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-accent, #c9a96e), var(--color-accent-hover, #b8965d));
-}
 
 .contact-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-large);
+    box-shadow: var(--color-accent-dark);
     background: rgba(255, 255, 255, 0.95);
 }
 
@@ -12486,23 +12151,12 @@ section.faq {
     text-align: center;
 }
 
-.contact-card__icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, var(--glass-bg-light), rgba(255, 255, 255, 0.8));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--glass-border);
-    transition: all 0.3s ease;
-}
+
 
 .contact-card__icon svg {
     width: 35px;
     height: 35px;
-    fill: var(--color-accent, #c9a96e);
+    fill: var(--color-accent);
     transition: all 0.3s ease;
 }
 
@@ -12539,10 +12193,7 @@ section.faq {
     transform: scale(1.1);
 }
 
-.contact-card:hover .contact-card__icon img {
-    filter: brightness(0) saturate(100%) invert(61%) sepia(31%) saturate(760%) hue-rotate(3deg) brightness(92%) contrast(87%) !important;
-    transform: scale(1.1);
-}
+
 
 .contact-card__note {
     color: var(--text-secondary);
@@ -14848,83 +14499,7 @@ section.gallery-hero .gallery-hero__subtitle.animate-fade-in-up {
     transform: translateY(0);
 }
 
-/* Дополнительные анимации для совместимости */
-.slide-up {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.6s ease-out;
-}
 
-.slide-up.animate,
-.slide-up.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.slide-left {
-    opacity: 1;
-    transform: translateX(0);
-    transition: all 0.6s ease-out;
-}
-
-.slide-left.animate,
-.slide-left.animate-in {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.slide-right {
-    opacity: 1;
-    transform: translateX(0);
-    transition: all 0.6s ease-out;
-}
-
-.slide-right.animate,
-.slide-right.animate-in {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.zoom-in {
-    opacity: 1;
-    transform: scale(1);
-    transition: all 0.6s ease-out;
-}
-
-.zoom-in.animate,
-.zoom-in.animate-in {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* Стабильные анимации - не возвращаемся к opacity: 0 */
-.animate-fade-in-up.animate-in,
-.animate-fade-in-up.animate {
-    opacity: 1;
-    transform: translateY(0);
-    animation-fill-mode: forwards;
-}
-
-.animate-fade-in-down.animate-in,
-.animate-fade-in-down.animate {
-    opacity: 1;
-    transform: translateY(0);
-    animation-fill-mode: forwards;
-}
-
-.animate-fade-in-left.animate-in,
-.animate-fade-in-left.animate {
-    opacity: 1;
-    transform: translateX(0);
-    animation-fill-mode: forwards;
-}
-
-.animate-fade-in-right.animate-in,
-.animate-fade-in-right.animate {
-    opacity: 1;
-    transform: translateX(0);
-    animation-fill-mode: forwards;
-}
 
 /* Гарантируем видимость CTA блока в портфолио с высокой специфичностью */
 section#portfolio.portfolio-categories .portfolio-categories__cta.animate-fade-in-up {
@@ -15051,183 +14626,6 @@ section.services .guarantee-badge-mini {
     visibility: visible;
     opacity: 1;
     transform: none;
-}
-
-/* Высокоспецифичные селекторы для анимированных элементов approach */
-html.page-loaded section.services [class*="slide-"],
-html.force-visible section.services [class*="slide-"],
-.no-js section.services [class*="slide-"] {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    animation-fill-mode: both;
-}
-
-html.page-loaded section.services .fade-in,
-html.force-visible section.services .fade-in,
-.no-js section.services .fade-in {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    animation-fill-mode: both;
-}
-
-html.page-loaded section.services .approach-card,
-html.force-visible section.services .approach-card,
-.no-js section.services .approach-card {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-}
-
-/* Переопределяем начальные состояния анимаций для approach */
-html.page-loaded section.services .slide-up,
-html.force-visible section.services .slide-up,
-.no-js section.services .slide-up,
-section.services .slide-up {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-section.services .approach-card.slide-up {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-}
-
-section.services .fade-in {
-    opacity: 1;
-    transform: none;
-    visibility: visible;
-}
-
-/* Стабильность видимости для process секции */
-section.process .process__steps {
-    display: flex;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-}
-
-section.process .process-step {
-    display: flex;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-}
-
-section.process .process-step__content {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-}
-
-section.process .process-step__number {
-    display: flex;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-}
-
-/* Высокоспецифичные селекторы для анимированных элементов process */
-html.page-loaded section.process [class*="slide-"],
-html.force-visible section.process [class*="slide-"],
-.no-js section.process [class*="slide-"] {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    animation-fill-mode: both;
-}
-
-html.page-loaded section.process .fade-in,
-html.force-visible section.process .fade-in,
-.no-js section.process .fade-in {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    animation-fill-mode: both;
-}
-
-/* Переопределяем начальные состояния анимаций для process */
-html.page-loaded section.process .slide-left,
-html.force-visible section.process .slide-left,
-.no-js section.process .slide-left,
-section.process .slide-left {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-html.page-loaded section.process .slide-right,
-html.force-visible section.process .slide-right,
-.no-js section.process .slide-right,
-section.process .slide-right {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* Стабильность видимости для testimonials секции */
-section.testimonials .testimonials__slider {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-}
-
-section.testimonials .testimonial-card {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-}
-
-section.testimonials .testimonial-card__content {
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-}
-
-section.testimonials .testimonial-card__author {
-    display: flex;
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-}
-
-/* Высокоспецифичные селекторы для анимированных элементов testimonials */
-html.page-loaded section.testimonials .zoom-in,
-html.force-visible section.testimonials .zoom-in,
-.no-js section.testimonials .zoom-in {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-    animation-fill-mode: both;
-}
-
-html.page-loaded section.testimonials .fade-in,
-html.force-visible section.testimonials .fade-in,
-.no-js section.testimonials .fade-in {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    animation-fill-mode: both;
-}
-
-/* Переопределяем начальные состояния анимаций для testimonials */
-html.page-loaded section.testimonials .testimonial-card,
-html.force-visible section.testimonials .testimonial-card,
-.no-js section.testimonials .testimonial-card,
-section.testimonials .testimonial-card {
-    opacity: 1;
-    transform: scale(1);
-    visibility: visible;
-}
-
-section.testimonials .testimonial-card.zoom-in {
-    opacity: 1;
-    transform: scale(1);
-    visibility: visible;
 }
 
 /* =================================================================
@@ -17265,21 +16663,4 @@ section.photo-gallery .photo-gallery__item.animate-fade-in-up.animate-in {
     }
 }
 
-/* Главный файл стилей - модульная архитектура CSS */
 
-/* Шрифты */
-
-/* Базовые стили */
-
-/* Компоненты */
-
-/* Структурные элементы */
-
-/* Страницы */
-
-/* Утилиты */
-
-/* Страницы галерей - загружаем после анимаций для большей специфичности */
-
-
-/*# sourceMappingURL=main.f760dbf419c23b4b2b57.css.map*/

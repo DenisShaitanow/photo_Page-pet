@@ -69,5 +69,78 @@ function moveQuestion() {
     })
 }
 
+function animationContacts() {
+    document.addEventListener('DOMContentLoaded', () => {
+        const contactSection = document.getElementById('contact');
+        const contactCards = document.querySelectorAll('#contacts .contact-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              contactCards.forEach(card => {
+                card.classList.add('animate-in');
+              });
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.3 });
+        
+        if (contactSection) {
+          observer.observe(contactSection);
+        }
+      });
+}
+
+function animationSteps() {  
+    document.addEventListener('DOMContentLoaded', () => {
+        const processSection = document.getElementById('process');
+        const steps = document.querySelectorAll('#process .process-step');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              steps.forEach(step => {
+                step.classList.add('animate-in');
+              });
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+        
+        if (processSection) {
+          observer.observe(processSection);
+        }
+      });
+}
+
+function startAutoSlide() {
+    setInterval(() => {
+        // Имитируем клик по кнопке "следующий слайд"
+        buttonNext.click();
+    }, 6000); // 3000 миллисекунд = 3 секунды
+}
+
+function headerButtons() {
+    const headerButtons = document.querySelectorAll('.nav__link');
+
+    headerButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            headerButtons.forEach((button) => {
+                button.classList.remove('nav__link--active');
+            })
+            button.classList.add('nav__link--active');
+
+            
+        })
+    })
+}
+
+
 moveSlide();
 moveQuestion();
+animationSteps();
+animationContacts();
+startAutoSlide();
+headerButtons();
+
+
