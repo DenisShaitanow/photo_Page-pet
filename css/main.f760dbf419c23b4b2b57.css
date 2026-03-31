@@ -15338,7 +15338,8 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--color-bg-secondary);
+    background: rgb(35, 111, 243, 0.4);
+
 }
 
 ::-webkit-scrollbar-thumb {
