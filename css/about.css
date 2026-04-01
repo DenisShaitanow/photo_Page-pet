@@ -322,6 +322,7 @@ body {
     margin: 0;
     border: 0;
     padding: 0;
+    min-width: 375px;
     /* padding остаётся управляемым через header.css */
 }
 body {
@@ -331,7 +332,7 @@ body {
 
 .about-container {
     max-width: 1232px;
-    min-width: 648px;
+    min-width: 375px;
     width: 100%;
     height: 80vh;
     padding-inline: 40px;
@@ -348,7 +349,7 @@ body {
 .contImg {
     position: relative;
     width: 60%;
-    height: 100%;
+    height: 100%;;
     display: block;
     overflow: hidden;
     background-color: transparent;
@@ -480,6 +481,7 @@ body {
     /*background-color: /*var(--color-gray-200)linear-gradient;*/
     background-image: linear-gradient(180deg, #e2e9f5 30%, #c9e0ff);
     padding-block: 40px;
+    min-width: 375px;
 }
 
 .close {
@@ -498,4 +500,91 @@ body {
 
 .close:hover {
     box-shadow: 0 0 30px var(--color-gray-100);
+}
+
+@media (width <= 1200px) {
+    .about-container {
+        flex-direction: column   ;
+        height: fit-content;
+        gap: 50px;
+        
+    }
+
+    .contImg {
+        width: 70%;
+        aspect-ratio: 3/4;
+        margin-inline: auto;
+    }
+
+    .aboutText {
+        width: 75%;
+        margin-inline: auto;
+        
+    }
+
+    .imageModal {
+        position: fixed;
+        inset: 8vh 15vw;
+        z-index: 3;
+        width: 67vw;
+        height: 55vh;
+        border-radius: 20px;
+        object-fit: cover;
+        
+    }
+
+    .close {
+        
+        inset: 5vh 83vw;
+
+    }
+}
+
+
+@media (width <= 600px) {
+    .pageAbout {
+        padding-top: 25px
+    }
+    .about-container {
+       padding-top: 0;
+        width: 90%;
+        padding-inline: 10px;
+        gap: 20px;
+        
+    }
+
+    .aboutText {
+        width: 90%;
+        font-size: 14px;
+        line-height: 20px;
+        
+        
+    }
+
+    .about-imageGallery {
+        width: 230px;
+        height: 280px;
+
+    }
+
+    .about-photoGallery {
+        margin-top: 50px;
+    }
+
+    .imageModal {
+        position: fixed;
+        inset: 8vh 19vw;
+        z-index: 3;
+        width: 67vw;
+        height: 40vh;
+        border-radius: 20px;
+        object-fit: cover;
+        
+    }
+
+    .close {
+        
+        inset: 4vh 85vw;
+
+    }
 }

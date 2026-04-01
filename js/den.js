@@ -135,6 +135,22 @@ function headerButtons() {
     })
 }
 
+function menu() {
+  const menuButton = document.querySelector('.contPoloski');
+  const menu = document.querySelector('.modalMenu');
+
+  menuButton.addEventListener('click', () => {
+    console.log('1')
+    menuButton.classList.toggle('poloskiRotate');
+    menu.classList.toggle('active');
+
+    menu.addEventListener('click', () => {
+      menuButton.classList.remove('poloskiRotate');
+    menu.classList.remove('active');
+    })
+  })
+}
+
 
 moveSlide();
 moveQuestion();
@@ -142,5 +158,6 @@ animationSteps();
 animationContacts();
 startAutoSlide();
 headerButtons();
+menu();
 
 
